@@ -1,4 +1,7 @@
-
+// $(function(){
+//     populateButtons(babyArray,'searchButton','#buttonsSpace');
+   
+// })
 
 //var babyArray = ['funny baby','dancing baby','crying baby'];
 
@@ -44,10 +47,11 @@ var babyArray = [
 //         a.text(babyArray[i]);
 //         $(areaToAddTo).append(a);
 
-
+//     }
+// } 
  var imageStill = "";
  var imageAnimate = "";
-//  funciton for creating buttons
+// create funciton to create buttons
 function createButtons() {
 
     $("#buttonsSpace").empty();
@@ -84,12 +88,12 @@ $("#addButtons").on("click", function (event) {
     var character = $("#search-input").val().trim();
 
     if(character!=="" && !isDuplicate(character)) {
-
+        // Adding the movie from the textbox to our array
         var obj = { name: character, currentState: "data-still", imageStill: "", imageAnimate: "" };
 
         babyArray.push(obj);
 
-        // Calling createButtons that will process the array
+        // Calling createButtons which handles the processing of our array
         createButtons();
     }
 });
@@ -98,7 +102,11 @@ $("#addButtons").on("click", function (event) {
 function displayBabies() {
 
     var baby = $(this).attr("data-character");
-    
+    //console.log("p_cartoon: "+p_cartoon);
+    //console.log("baby: "+baby);
+
+
+    // variable url
     var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=JbAze3Bq2K81GsPhzV1gSBiyZyA2vR38&q=" + baby +
      "&limit=10&offset=0&rating=PG-13&lang=en";
 
@@ -108,16 +116,16 @@ function displayBabies() {
     })
 
     .then(function (response) {
-        // we are going to get data from queryURL.
+        // in this function we are going to get data from giphyUrl.
         var results = response.data;
 
-       // console.log(results);
+        console.log(response);
         //console.log($(this).attr("data-character"));
         //console.log("rating : " + results[0].rating);
         //console.log(results);
 
         //clear any previous images
-        $(".searches").empty();
+        $("#searches").empty();
         for (var j = 0; j < results.length; j++) {
             if (results[j].rating !== "r" && results[j].rating !== "pg-13") {
                 var babyImage = $("<img>");
@@ -125,15 +133,15 @@ function displayBabies() {
                 babyImage.attr("src", results[j].images.fixed_height_still.url);
                 babyImage.attr("data-state", "data-still");
 
-                 //console.log("index : " + babyArray.indexOf(baby));
+                 console.log("index : " + babyArray.indexOf(baby));
 
-                
+                //imgObjArray[imgObjArray.indexOf(p_cartoon)].imageStill = results[j].images.fixed_height_still.url;
                 babyImage.attr("data-still", results[j].images.fixed_height_still.url);
                 babyImage.attr("data-animate", results[j].images.fixed_height.url);
                 babyImage.attr("id", baby);
-                babyImage.addClass("searches");
+                babyImage.addClass("images");
 
-                $(".searches").prepend(babyImage);
+                $("#searches").prepend(babyImage);
                 // $("body").css('background-image', 'url(' + results[j].images.fixed_height_still.url + ')');
                 // $("body").css('background-size', '100%');
 
@@ -146,7 +154,9 @@ function imageClick() {
 
     var currentStateAttr = $(this).attr("data-state");
 
-    //console.log("currentStateAttr : " + currentStateAttr);
+    //var currentStateAttr = $("#Cinderella").attr("data-state");
+
+    console.log("currentStateAttr : " + currentStateAttr);
 
     imageStill = currentImage.attr("data-still");
     imageAnimate = currentImage.attr("data-animate");
@@ -163,4 +173,4 @@ function imageClick() {
 }
 
 $(document).on("click", ".Baby-buttons", displayBabies);
-$(document).on("click", ".searches", imageClick);
+$(document).on("click", "#searches", imageClick);
