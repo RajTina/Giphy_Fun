@@ -91,6 +91,7 @@ $("#addButtons").on("click", function (event) {
 
         // Calling createButtons that will process the array
         createButtons();
+       
     }
 });
 
@@ -134,8 +135,7 @@ function displayBabies() {
                 babyImage.addClass("searches");
 
                 $(".searches").prepend(babyImage);
-                 $(".Baby-buttons").css('background-image', 'url(' + results[j].images.fixed_height_still.url + ')');
-                // $("body").css('background-size', '100%');
+                 
 
             }
         }
@@ -146,7 +146,6 @@ function imageClick() {
 
     var currentStateAttr = $(this).attr("data-state");
 
-    //console.log("currentStateAttr : " + currentStateAttr);
 
     imageStill = currentImage.attr("data-still");
     imageAnimate = currentImage.attr("data-animate");
