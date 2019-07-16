@@ -134,7 +134,7 @@ function displayBabies() {
                 babyImage.addClass("searches");
 
                 $(".searches").prepend(babyImage);
-                // $("body").css('background-image', 'url(' + results[j].images.fixed_height_still.url + ')');
+                 $(".Baby-buttons").css('background-image', 'url(' + results[j].images.fixed_height_still.url + ')');
                 // $("body").css('background-size', '100%');
 
             }

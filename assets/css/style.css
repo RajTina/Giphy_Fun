@@ -3,6 +3,7 @@
     margin: 50px;
     background-color: coral;
     width : 250px;
+  
     
      
 }
@@ -10,6 +11,8 @@
 #search-input{
     box-shadow: 30px coral;
     margin-left: 35px;
+  
+    
     
    
 }
@@ -31,11 +34,33 @@ body{
     text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
     font-size: 20px;
     background-color: coral;
+    justify-content: center;
+  
+    
+    
 }
 
 .img{
-    float: right;
+    float: left;
+    width: 200px;
 }
 .space{
     justify-content: center;
+}
+
+.h2{
+    display: flex;
+    color:coral;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+    font-size: 30px;
+  
+
+}
+.Baby-buttons{
+    justify-content: center;
+    color:white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+    font-size: 20px;
+    background-color: coral;
+   
 }
