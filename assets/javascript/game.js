@@ -121,20 +121,47 @@ function displayBabies() {
         $(".searches").empty();
         for (var j = 0; j < results.length; j++) {
             if (results[j].rating !== "r" && results[j].rating !== "pg-13") {
+               
+                var gifDiv = $("<div id = 'gifDiv'>");
+
+                // Storing the result item's rating
                 var babyImage = $("<img>");
+                var rating = $("<p id = 'rating'>")
+                rating.text('Rating - '+results[j].rating)
+            
+               
+                // gifDiv.prepend(p);
 
                 babyImage.attr("src", results[j].images.fixed_height_still.url);
                 babyImage.attr("data-state", "data-still");
 
                  //console.log("index : " + babyArray.indexOf(baby));
 
-                
-                babyImage.attr("data-still", results[j].images.fixed_height_still.url);
-                babyImage.attr("data-animate", results[j].images.fixed_height.url);
-                babyImage.attr("id", baby);
-                babyImage.addClass("searches");
+                 for(var m=0;m<babyArray.length;m++)
+                 {
+                     if(babyArray[m].name === baby ){
+                         babyArray[m].imageStill=results[j].images.fixed_height_still.url;
+                         babyArray[m].imageAnimate=results[j].images.fixed_height.url;
+                     }
+                 }
+ 
 
-                $(".searches").prepend(babyImage);
+                
+                 babyImage.attr("data-still", results[j].images.fixed_height_still.url);
+                 babyImage.attr("data-animate", results[j].images.fixed_height.url);
+                 babyImage.attr("id", baby);
+                 babyImage.addClass("searches");
+ 
+
+                //$(".searches").prepend(babyImage);
+                 // Add image and rating to imagecontainer
+                $("#gifDiv").append(rating);
+                $("#gifDiv").append(babyImage)
+                // show the image container
+               // $(".gifDiv").css("opacity","1.0");
+
+
+                $(".searches").prepend(gifDiv);
                  
 
             }
